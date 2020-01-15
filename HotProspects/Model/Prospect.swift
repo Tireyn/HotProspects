@@ -52,14 +52,6 @@ class Prospects: ObservableObject {
         prospect.isContacted.toggle()
         saveData()
     }
-    
-    func checkProspectContacted(_ prospect: Prospect) -> Bool {
-        if prospect.isContacted == true {
-            return true
-        }
-        
-        return false
-    }
 }
 
 extension FileManager {

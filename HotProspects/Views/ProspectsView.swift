@@ -56,23 +56,23 @@ struct ProspectsView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
-                        .contextMenu {
-                            Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
-                                self.prospects.toggle(prospect)
-                            }
-                            if !prospect.isContacted {
-                                Button("Remind Me") {
-                                    self.addNotification(for: prospect)
-                                }
-                            }
-                        }
                         
                         Spacer()
                         
-                        if self.prospects.checkProspectContacted(prospect) == true {
+                        if prospect.isContacted {
                             Image(systemName: "checkmark.circle")
                         } else {
                             Image(systemName: "questionmark.diamond")
+                        }
+                    }
+                    .contextMenu {
+                        Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
+                            self.prospects.toggle(prospect)
+                        }
+                        if !prospect.isContacted {
+                            Button("Remind Me") {
+                                self.addNotification(for: prospect)
+                            }
                         }
                     }
                 }
